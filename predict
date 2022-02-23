@@ -1,0 +1,16 @@
+predictions = model.predict(X_test)
+print(predictions)
+predictions=predictions.argmax(axis=1)
+predictions = predictions.astype(int).flatten()
+predictions = (lb.inverse_transform((predictions)))
+predictions = pd.DataFrame({'Predicted Values': predictions})
+
+# ACTUAL LABELS
+actual=y_test.argmax(axis=1)
+actual = actual.astype(int).flatten()
+actual = (lb.inverse_transform((actual)))
+actual = pd.DataFrame({'Actual Values': actual})
+
+# COMBINE BOTH 
+finaldf = actual.join(predictions)
+finaldf[140:150]
