@@ -1,0 +1,2 @@
+dir_tess=os.listdir(TESS)
+dir_tess
