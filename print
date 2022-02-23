@@ -1,0 +1,4 @@
+a=os.listdir(TESS+'/'+dir_tess[0])
+print(a[0])
+print(dir_tess[0])
+print(TESS+dir_tess[0]+'/'+a[0])
