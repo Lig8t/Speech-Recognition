@@ -1,0 +1,7 @@
+from keras.utils.np_utils import to_categorical
+lb = LabelEncoder()
+y_train = to_categorical(lb.fit_transform(y_train))
+y_test = to_categorical(lb.fit_transform(y_test))
+
+new_set = set(y)
+print("No of unique items in the list are:", len(new_set))
