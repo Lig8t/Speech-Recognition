@@ -1,0 +1,28 @@
+for i in dir_tess:
+    k=TESS +'/' +i
+    j=os.listdir(k)
+    for g in j:
+        if(i[4]=='d'):
+            dataset_new.loc[n_cnt]='Disgust'
+        elif(i[4]=='f' or i[4]=='F'):
+            dataset_new.loc[n_cnt]='Fear'
+        elif(i[4]=='s' or i[4]=='S'):
+            dataset_new.loc[n_cnt]='Sad'
+        elif(i[4]=='n'):
+            dataset_new.loc[n_cnt]='Neutral'
+        elif(i[4]=='a'):
+            dataset_new.loc[n_cnt]='Angry'
+        elif(i[4]=='h'):
+            dataset_new.loc[n_cnt]='Happy'
+        elif(i[4]=='p' or i[4]=='P'):
+            dataset_new.loc[n_cnt]='Surprise'
+        n_cnt=n_cnt+1
+        u=k+'/'+g
+        print(k+'/'+g)
+        X,sample_rate=librosa.load(u,res_type='kaiser_fast',duration=2.5,sr=44100,offset=0.5)
+        sample_rate=np.array([sample_rate])
+        mfcc=librosa.feature.mfcc(y=X,sr=sample_rate,n_mfcc=13)
+        mfcc=np.mean(mfcc,axis=0)
+        #mfcc=[mfcc]
+        dataset.loc[cnt]=[mfcc]
+        cnt=cnt+1
